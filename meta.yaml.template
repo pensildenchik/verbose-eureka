@@ -1,0 +1,79 @@
+{% set name = "Jinja2" %}
+{% set version = "3.1.4" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0]|lower }}/{{ name|lower }}/{{ name|lower }}-{{ version }}.tar.gz
+  sha256: 4a3aee7acbbe7303aede8e9648d13b8bf88a429282aa6122a993f0ac800cb369
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: True  # [py<37]
+
+requirements:
+  host:
+    - pip
+    - python
+    - flit-core <4
+  run:
+    - markupsafe >=2.0
+    - python
+  run_constrained:
+    - babel >=2.7
+
+test:
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest
+  imports:
+    - jinja2
+  commands:
+    - pip check
+    - pytest tests -k "not test_elif_deep"  # [py==312 and s390x]
+    - pytest tests -v # [not (py==312 and s390x)]
+
+about:
+  home: https://palletsprojects.com/p/jinja/
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: A very fast and expressive template engine.
+  description: |
+    Jinja is a fast, expressive, extensible templating engine. Special
+    placeholders in the template allow writing code similar to Python
+    syntax. Then the template is passed data to render the final document.
+
+    It includes:
+
+    -   Template inheritance and inclusion.
+    -   Define and import macros within templates.
+    -   HTML templates can use autoescaping to prevent XSS from untrusted
+        user input.
+    -   A sandboxed environment can safely render untrusted templates.
+    -   AsyncIO support for generating templates and calling async
+        functions.
+    -   I18N support with Babel.
+    -   Templates are compiled to optimized Python code just-in-time and
+        cached, or can be compiled ahead-of-time.
+    -   Exceptions point to the correct line in templates to make debugging
+        easier.
+    -   Extensible filters, tests, functions, and even syntax.
+
+    Jinja's philosophy is that while application logic belongs in Python if
+    possible, it shouldn't make the template designer's job difficult by
+    restricting functionality too much.
+  doc_url: https://jinja.palletsprojects.com/
+  dev_url: https://github.com/pallets/jinja/
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - msarahan
+    - scopatz
+    - nehaljwani

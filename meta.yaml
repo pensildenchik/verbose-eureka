@@ -1,0 +1,83 @@
+# This file created by conda-build 24.5.0
+# meta.yaml template originally from:
+# C:\b\abs_92fccttino\clone\recipe, last modified Wed May 29 15:36:59 2024
+# ------------------------------------------------
+
+package:
+  name: jinja2
+  version: 3.1.4
+source:
+  sha256: 4a3aee7acbbe7303aede8e9648d13b8bf88a429282aa6122a993f0ac800cb369
+  url: https://pypi.io/packages/source/j/jinja2/jinja2-3.1.4.tar.gz
+build:
+  number: '0'
+  script: C:\\b\\abs_92fccttino\\croot\\jinja2_1716993447201\\_h_env\\python.exe -m
+    pip install . --no-deps --no-build-isolation -vv
+  string: py312haa95532_0
+requirements:
+  host:
+    - bzip2 1.0.8 h2bbff1b_6
+    - ca-certificates 2024.3.11 haa95532_0
+    - expat 2.6.2 hd77b12b_0
+    - flit-core 3.9.0 py312he100be2_1
+    - libffi 3.4.4 hd77b12b_1
+    - openssl 3.0.13 h2bbff1b_2
+    - pip 24.0 py312haa95532_0
+    - python 3.12.3 h1d929f7_1
+    - setuptools 69.5.1 py312haa95532_0
+    - sqlite 3.45.3 h2bbff1b_0
+    - tk 8.6.14 h0416ee5_0
+    - tzdata 2024a h04d1e81_0
+    - vc 14.2 h2eaa2aa_1
+    - vs2015_runtime 14.29.30133 h43f2093_3
+    - wheel 0.43.0 py312haa95532_0
+    - xz 5.4.6 h8cc25b3_1
+    - zlib 1.2.13 h8cc25b3_1
+  run:
+    - markupsafe >=2.0
+    - python >=3.12,<3.13.0a0
+  run_constrained:
+    - babel >=2.7
+test:
+  commands:
+    - pip check
+    - pytest tests -v
+  imports:
+    - jinja2
+  requires:
+    - pip
+    - pytest
+  source_files:
+    - tests
+about:
+  description: "Jinja is a fast, expressive, extensible templating engine. Special\n\
+    placeholders in the template allow writing code similar to Python\nsyntax. Then\
+    \ the template is passed data to render the final document.\n\nIt includes:\n\n\
+    -   Template inheritance and inclusion.\n-   Define and import macros within templates.\n\
+    -   HTML templates can use autoescaping to prevent XSS from untrusted\n    user\
+    \ input.\n-   A sandboxed environment can safely render untrusted templates.\n\
+    -   AsyncIO support for generating templates and calling async\n    functions.\n\
+    -   I18N support with Babel.\n-   Templates are compiled to optimized Python code\
+    \ just-in-time and\n    cached, or can be compiled ahead-of-time.\n-   Exceptions\
+    \ point to the correct line in templates to make debugging\n    easier.\n-   Extensible\
+    \ filters, tests, functions, and even syntax.\n\nJinja's philosophy is that while\
+    \ application logic belongs in Python if\npossible, it shouldn't make the template\
+    \ designer's job difficult by\nrestricting functionality too much.\n"
+  dev_url: https://github.com/pallets/jinja/
+  doc_url: https://jinja.palletsprojects.com/
+  home: https://palletsprojects.com/p/jinja/
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: A very fast and expressive template engine.
+extra:
+  copy_test_source_files: true
+  final: true
+  flow_run_id: 926c14f6-b0cf-4341-a683-1e2be16f4c12
+  recipe-maintainers:
+    - jakirkham
+    - msarahan
+    - nehaljwani
+    - scopatz
+  remote_url: git@github.com:AnacondaRecipes/jinja2-feedstock.git
+  sha: 6afd1c79dadc2a83fb46fe70f958c700ea00abf6
